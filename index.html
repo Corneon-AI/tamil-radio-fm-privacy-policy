@@ -1,94 +1,406 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TamilRadio FM | Corneon AI</title>
-
-  <!-- Basic SEO / trust signals -->
-  <meta name="description" content="TamilRadio FM by Corneon AI. Listen to Tamil FM radio stations live — music, news, talk & more." />
-  <meta name="author" content="Corneon AI" />
+  <meta name="description" content="TamilRadio FM by Corneon AI — Listen to Tamil FM radio stations live. Music, devotional, news, talk & more." />
   <meta name="theme-color" content="#b76e79" />
 
   <style>
-    :root { --accent:#b76e79; --bg:#ffffff; --card:#f7f7f7; --text:#1a1a1a; --muted:#6b6b6b; }
-    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 16px; }
+    :root{
+      --bg: #0b0b10;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --accent: #b76e79;       /* rose */
+      --accent2:#7c3aed;       /* purple */
+      --good:#22c55e;
+      --shadow: 0 20px 80px rgba(0,0,0,.55);
+      --r: 22px;
+    }
 
-    .topbar { display:flex; justify-content:space-between; align-items:center; gap: 12px; margin-bottom: 14px; }
-    .brand { font-weight: 700; letter-spacing: .2px; }
-    .brand span { color: var(--accent); }
-    .mini { font-size: 13px; color: var(--muted); }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(183,110,121,.35), transparent 55%),
+        radial-gradient(800px 540px at 85% 15%, rgba(124,58,237,.30), transparent 55%),
+        radial-gradient(900px 680px at 65% 75%, rgba(34,197,94,.20), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
 
-    .hero { background: linear-gradient(135deg, #fff, var(--card)); border-radius: 18px; padding: 22px; }
-    h1 { margin: 0 0 8px; font-size: 28px; }
-    .tag { color: var(--muted); margin: 0 0 14px; }
+    a{ color: inherit; }
+    .container{ max-width: 1100px; margin:0 auto; padding: 22px 16px 60px; }
 
-    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
-    a.btn { text-decoration: none; border-radius: 12px; padding: 10px 14px; font-weight: 700; display:inline-flex; align-items:center; gap: 8px; }
-    .primary { background: var(--accent); color: #fff; }
-    .ghost { border: 1px solid #ddd; color: var(--text); background: #fff; }
+    /* Topbar */
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      position: sticky; top: 0;
+      padding: 14px 0;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(11,11,16,.75), rgba(11,11,16,.35));
+      z-index: 10;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width: 34px; height: 34px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 45%),
+                  linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .brand small{ color: var(--muted); font-weight:700; }
+    .nav{ display:flex; gap:14px; align-items:center; }
+    .nav a{
+      text-decoration:none; color: var(--muted); font-weight:800; font-size: 14px;
+      padding: 10px 12px; border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+    }
 
-    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 16px; }
-    @media (min-width: 820px){ .grid { grid-template-columns: 1fr 1fr; } }
+    /* Hero */
+    .hero{
+      margin-top: 10px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .nav{ display:none; }
+    }
 
-    .card { background: var(--card); border-radius: 18px; padding: 16px; }
-    ul { margin: 8px 0 0 18px; }
-    footer { margin-top: 18px; color: var(--muted); font-size: 13px; }
-    .small { font-size: 14px; color: var(--muted); }
-    .pill { display:inline-block; background:#fff; border:1px solid #e7e7e7; padding:6px 10px; border-radius: 999px; font-size: 12px; color: var(--muted); }
-    a { color: var(--accent); }
+    .panel{
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel-inner{ padding: 22px; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(183,110,121,.18);
+    }
+
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -.6px;
+    }
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 56ch;
+    }
+
+    .cta{
+      display:flex; flex-wrap: wrap; gap: 12px;
+      margin-top: 16px;
+      align-items:center;
+    }
+    .btn{
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+    }
+    .btn-primary{
+      border: 1px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 18px 50px rgba(183,110,121,.22);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .meta{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .meta a{ color: rgba(255,255,255,.85); }
+
+    /* Right hero screenshots */
+    .device{
+      position: relative;
+      min-height: 360px;
+      background:
+        radial-gradient(320px 220px at 30% 30%, rgba(255,255,255,.14), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    }
+    .device-inner{ padding: 22px; }
+    .device-title{ font-weight: 900; font-size: 14px; color: rgba(255,255,255,.86); }
+    .device-sub{ margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+    .shots{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .shot{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      padding: 10px;
+    }
+    .shot img{
+      width:100%;
+      display:block;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35);
+      background: rgba(0,0,0,.25);
+    }
+    .caption{
+      text-align:center;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    /* Sections */
+    .section{ margin-top: 18px; }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px){ .grid3{ grid-template-columns: 1fr; } }
+
+    .card{
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding: 16px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 15px;
+      letter-spacing: -.2px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .icon{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(255,255,255,.14);
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.20), rgba(255,255,255,.06));
+      margin-bottom: 10px;
+    }
+
+    /* FAQ */
+    details{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      padding: 12px 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      color: rgba(255,255,255,.88);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin: 10px 0 0; color: var(--muted); line-height: 1.6; }
+
+    /* Footer */
+    .footer{
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items:center;
+    }
+    .footer a{ text-decoration:none; color: rgba(255,255,255,.80); font-weight: 800; }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="container">
 
+    <!-- Topbar -->
     <div class="topbar">
-      <div class="brand">Corneon <span>AI</span></div>
-      <div class="mini">Product page • TamilRadio FM</div>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          Corneon AI <small>• TamilRadio FM</small>
+        </div>
+      </div>
+
+      <div class="nav">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#faq">FAQ</a>
+        <a href="./privacy.html">Privacy</a>
+        <a href="./support.html">Support</a>
+      </div>
     </div>
 
+    <!-- Hero -->
     <div class="hero">
-      <div class="pill">Android • Audio Streaming</div>
-      <h1 style="margin-top:10px;">TamilRadio FM</h1>
-      <p class="tag">Listen to Tamil FM radio stations live — music, news, talk & more.</p>
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="badge"><span class="dot"></span> Premium Tamil Radio Streaming</div>
 
-      <div class="btns">
-        <!-- Replace # with your Play Store URL once the app is published -->
-        <a class="btn primary" href="#" target="_blank" rel="noopener">Get it on Google Play</a>
-        <a class="btn ghost" href="./privacy.html">Privacy Policy</a>
+          <h1>Listen. Save favorites. Keep it playing.</h1>
+          <p class="sub">
+            TamilRadio FM is a clean, fast radio app that helps you discover Tamil stations and enjoy
+            music, devotional, news and talk — with a smooth, modern player.
+          </p>
+
+          <div class="cta">
+            <!-- Replace # with your Play Store link once live -->
+            <a class="btn btn-primary" href="#" target="_blank" rel="noopener">
+              Get it on Google Play
+              <span aria-hidden="true">→</span>
+            </a>
+            <a class="btn" href="./privacy.html">Privacy Policy</a>
+          </div>
+
+          <div class="meta">
+            Support: <a href="mailto:psgtech.mohan@gmail.com">psgtech.mohan@gmail.com</a>
+          </div>
+        </div>
       </div>
 
-      <p class="small" style="margin-top:12px;">
-        Support: <a href="mailto:psgtech.mohan@gmail.com">psgtech.mohan@gmail.com</a>
-      </p>
+      <!-- Screens -->
+      <div class="panel device" id="screens">
+        <div class="device-inner">
+          <div class="device-title">Real app screens – TamilRadio FM Screens</div>
+          <div class="device-sub">Home • Search • Stations • Now Playing</div>
+
+          <div class="shots">
+            <div class="shot">
+              <img src="./images/screen_home.png" alt="TamilRadio FM Home Screen">
+              <div class="caption">Home</div>
+            </div>
+
+            <div class="shot">
+              <img src="./images/screen_search.png" alt="Search Tamil stations">
+              <div class="caption">Search</div>
+            </div>
+
+            <div class="shot">
+              <img src="./images/screen_list.png" alt="Stations list">
+              <div class="caption">Stations</div>
+            </div>
+
+            <div class="shot">
+              <img src="./images/screen_player.png" alt="Now Playing screen">
+              <div class="caption">Now Playing</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <h2 style="margin:0 0 8px;">Key Features</h2>
-        <ul>
-          <li>Live Tamil FM radio streaming</li>
-          <li>Music, devotional, news & talk stations</li>
-          <li>Background playback support</li>
-          <li>Simple, fast and lightweight</li>
-        </ul>
-      </div>
+    <!-- Features -->
+    <div class="section" id="features">
+      <div class="grid3">
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Fast & lightweight</h3>
+          <p>Quick loading, smooth scrolling, and a minimal UI designed for daily use.</p>
+        </div>
 
-      <div class="card">
-        <h2 style="margin:0 0 8px;">Disclaimer</h2>
-        <p style="margin:0;">
-          TamilRadio FM provides access to publicly available radio stream links.
-          We do not host, own, or claim rights to third-party streams, station names, or logos unless explicitly stated.
-          Station availability and content are managed by the respective providers.
-        </p>
+        <div class="card">
+          <div class="icon">❤️</div>
+          <h3>Favorites</h3>
+          <p>Save the stations you love and jump back instantly any time.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎧</div>
+          <h3>Background playback</h3>
+          <p>Keep listening while using other apps (supports media controls & notifications).</p>
+        </div>
       </div>
     </div>
 
-    <footer>
-      © <span id="y"></span> Corneon AI • TamilRadio FM • <a href="./privacy.html">Privacy Policy</a>
-    </footer>
+    <!-- FAQ -->
+    <div class="section" id="faq">
+      <div class="panel" style="background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);">
+        <div class="panel-inner">
+          <div class="badge"><span class="dot"></span> FAQ</div>
+          <div style="height:10px;"></div>
+
+          <details open>
+            <summary>Do you host the radio streams?</summary>
+            <p>
+              No. TamilRadio FM provides access to publicly available stream links. Streams, names, and logos are managed by their respective providers.
+            </p>
+          </details>
+
+          <details>
+            <summary>What if a station doesn’t play?</summary>
+            <p>
+              Some stations change or go offline. Try another station or check your network. If it keeps happening, email support and include the station name.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you collect personal data?</summary>
+            <p>
+              We don’t ask for personal info like name/phone. If analytics/ads are enabled, limited device/app data may be collected as described in the Privacy Policy.
+            </p>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div>© <span id="y"></span> Corneon AI • TamilRadio FM</div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="./privacy.html">Privacy</a>
+        <a href="./support.html">Support</a>
+      </div>
+    </div>
+
   </div>
 
   <script>

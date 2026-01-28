@@ -1,108 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TamilRadio FM - Privacy Policy</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TamilRadio FM - Privacy Policy | Corneon AI</title>
   <meta name="description" content="Privacy Policy for TamilRadio FM by Corneon AI." />
+  <meta name="theme-color" content="#b76e79" />
+
   <style>
-    :root { --accent:#b76e79; --card:#f7f7f7; --text:#1a1a1a; --muted:#6b6b6b; }
-    body { font-family: Arial, sans-serif; max-width: 980px; margin: 24px auto; padding: 0 16px; line-height: 1.65; color: var(--text); }
-    h1 { margin-top: 6px; }
-    h2 { margin-top: 22px; }
-    .muted { color: var(--muted); }
-    .box { background: var(--card); padding: 14px 16px; border-radius: 12px; }
-    a { color: var(--accent); }
-    code { background: #f1f1f1; padding: 2px 6px; border-radius: 6px; }
-    ul { margin-top: 8px; }
+    :root{
+      --bg:#0b0b10;
+      --card: rgba(255,255,255,.08);
+      --line: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --accent:#b76e79;
+      --accent2:#7c3aed;
+      --r:22px;
+      --shadow: 0 20px 80px rgba(0,0,0,.55);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(183,110,121,.35), transparent 55%),
+        radial-gradient(800px 540px at 85% 15%, rgba(124,58,237,.30), transparent 55%),
+        var(--bg);
+    }
+    .container{ max-width: 980px; margin:0 auto; padding: 22px 16px 60px; }
+    .topbar{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      position: sticky; top:0; z-index:10;
+      padding: 14px 0;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(11,11,16,.75), rgba(11,11,16,.25));
+    }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.2px; }
+    .logo{
+      width: 34px; height: 34px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.35), transparent 45%),
+                  linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .brand small{ color: var(--muted); font-weight:800; }
+    .nav{ display:flex; gap:12px; }
+    .nav a{
+      text-decoration:none; color: var(--muted); font-weight:900; font-size: 14px;
+      padding: 10px 12px; border-radius: 999px; border: 1px solid transparent;
+    }
+    .nav a:hover{ color: var(--text); border-color: rgba(255,255,255,.16); background: rgba(255,255,255,.06); }
+
+    .panel{
+      margin-top: 10px;
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel-inner{ padding: 22px; }
+
+    h1{ margin: 0 0 8px; font-size: clamp(26px, 3.8vw, 38px); letter-spacing:-.4px; }
+    .muted{ color: var(--muted); }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 13px; font-weight: 900;
+    }
+    .dot{ width: 8px; height: 8px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(183,110,121,.18);
+    }
+
+    h2{ margin: 18px 0 8px; font-size: 16px; letter-spacing: -.2px; }
+    p{ margin: 0 0 10px; line-height: 1.7; color: rgba(255,255,255,.86); }
+    ul{ margin: 8px 0 12px 18px; color: rgba(255,255,255,.86); }
+    li{ margin: 6px 0; }
+    a{ color: rgba(255,255,255,.92); }
+    .link{ color: rgba(255,255,255,.92); font-weight:900; }
+
+    .footer{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex; flex-wrap:wrap; gap: 10px;
+      justify-content: space-between; align-items:center;
+    }
   </style>
 </head>
-<body>
-  <h1>TamilRadio FM - Privacy Policy</h1>
-  <p class="muted">Last updated: 2026-01-28</p>
 
-  <div class="box">
-    <p><b>TamilRadio FM</b> is a radio streaming app published by <b>Corneon AI</b>. We respect your privacy. This Privacy Policy explains what information we collect, how we use it, and your choices.</p>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Corneon AI <small>• TamilRadio FM</small></div>
+      </div>
+      <div class="nav">
+        <a href="./index.html">Home</a>
+        <a href="./support.html">Support</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-inner">
+        <div class="badge"><span class="dot"></span> Privacy Policy</div>
+
+        <h1 style="margin-top:12px;">TamilRadio FM - Privacy Policy</h1>
+        <p class="muted">Last updated: 2026-01-28</p>
+
+        <p><b>TamilRadio FM</b> is a radio streaming app published by <b>Corneon AI</b>. We respect your privacy. This Privacy Policy explains what information we collect, how we use it, and your choices.</p>
+
+        <h2>1) Information We Collect</h2>
+        <p><b>We do not ask for or collect personal information</b> such as your name, phone number, address, contacts, or payment information.</p>
+        <p>Depending on how the app is configured, the app may collect limited information such as:</p>
+        <ul>
+          <li><b>App activity & performance data</b> (e.g., basic usage events, crash logs, diagnostics, and performance metrics) to improve stability and performance.</li>
+          <li><b>Advertising ID</b> (only if ads are enabled) to show and measure ads and reduce irrelevant ad repetition.</li>
+          <li><b>Log data</b> (technical information such as device model, OS version, and network type) when the app encounters an error.</li>
+        </ul>
+
+        <h2>2) How We Use Information</h2>
+        <ul>
+          <li>To provide and maintain streaming functionality</li>
+          <li>To fix crashes, improve performance, and enhance user experience</li>
+          <li>To understand feature usage and improve the product</li>
+          <li>To display ads (only if ads are enabled)</li>
+        </ul>
+
+        <h2>3) Radio Streams & Content</h2>
+        <p>
+          TamilRadio FM provides access to publicly available radio stream links. We do not host or own the radio streams unless explicitly stated.
+          Stream availability, audio content, and station metadata are controlled by the respective station providers.
+        </p>
+
+        <h2>4) Permissions</h2>
+        <ul>
+          <li><b>Internet</b>: required to stream radio content</li>
+          <li><b>Foreground service / notifications</b> (if enabled): used for audio playback controls and persistent playback while streaming</li>
+        </ul>
+
+        <h2>5) Third-Party Services</h2>
+        <p>
+          The app may use third-party services for analytics, crash reporting, or advertising (only if enabled).
+          These services may collect limited information as described above, under their respective privacy policies.
+        </p>
+
+        <h2>6) Data Sharing</h2>
+        <p>
+          We do not sell your personal data. Limited data (such as crash logs, diagnostics, and Advertising ID if ads are enabled) may be shared with service providers
+          only for operating, improving, and monetizing the app (for example analytics/crash tools and ad networks when enabled).
+        </p>
+
+        <h2>7) Data Retention</h2>
+        <p>
+          We keep collected data only for as long as needed for the purposes described in this policy (e.g., to improve stability and performance),
+          and as required by applicable laws or service provider retention rules.
+        </p>
+
+        <h2>8) Security</h2>
+        <p>We take reasonable measures to protect information. However, no method of transmission over the Internet is 100% secure.</p>
+
+        <h2>9) Your Choices</h2>
+        <ul>
+          <li>You can uninstall the app at any time to stop further data collection.</li>
+          <li>If ads are enabled, you can reset or limit your Advertising ID in your device settings.</li>
+        </ul>
+
+        <h2>10) Children’s Privacy</h2>
+        <p>TamilRadio FM is not directed to children under 13 and we do not knowingly collect personal data from children.</p>
+
+        <h2>11) Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page and the “Last updated” date will be revised accordingly.</p>
+
+        <h2>12) Contact</h2>
+        <p>
+          If you have questions about this Privacy Policy, contact us at:
+          <a class="link" href="mailto:psgtech.mohan@gmail.com">psgtech.mohan@gmail.com</a>
+        </p>
+
+        <div class="footer">
+          <div>© <span id="y"></span> Corneon AI</div>
+          <div><a class="link" href="./index.html">Back to Home</a></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <h2>1) Information We Collect</h2>
-  <p><b>We do not ask for or collect personal information</b> such as your name, phone number, address, contacts, or payment information.</p>
-
-  <p>Depending on how the app is configured, the app may collect limited information such as:</p>
-  <ul>
-    <li><b>App activity & performance data</b> (e.g., basic usage events, crash logs, diagnostics, and performance metrics) to improve stability and performance.</li>
-    <li><b>Advertising ID</b> (only if ads are enabled) to show and measure ads and reduce irrelevant ad repetition.</li>
-    <li><b>Log data</b> (technical information such as device model, OS version, and network type) when the app encounters an error.</li>
-  </ul>
-
-  <h2>2) How We Use Information</h2>
-  <ul>
-    <li>To provide and maintain streaming functionality</li>
-    <li>To fix crashes, improve performance, and enhance user experience</li>
-    <li>To understand feature usage and improve the product</li>
-    <li>To display ads (only if ads are enabled)</li>
-  </ul>
-
-  <h2>3) Radio Streams & Content</h2>
-  <p>
-    TamilRadio FM provides access to publicly available radio stream links. We do not host or own the radio streams unless explicitly stated.
-    Stream availability, audio content, and station metadata are controlled by the respective station providers.
-  </p>
-
-  <h2>4) Permissions</h2>
-  <ul>
-    <li><b>Internet</b>: required to stream radio content</li>
-    <li><b>Foreground service / notifications</b> (if enabled): used for audio playback controls and persistent playback while streaming</li>
-  </ul>
-
-  <h2>5) Third-Party Services</h2>
-  <p>
-    The app may use third-party services for analytics, crash reporting, or advertising (only if enabled).
-    These services may collect limited information as described above, under their respective privacy policies.
-  </p>
-
-  <h2>6) Data Sharing</h2>
-  <p>
-    We do not sell your personal data. Limited data (such as crash logs, diagnostics, and Advertising ID if ads are enabled) may be shared with service providers
-    only for operating, improving, and monetizing the app (for example analytics/crash tools and ad networks when enabled).
-  </p>
-
-  <h2>7) Data Retention</h2>
-  <p>
-    We keep collected data only for as long as needed for the purposes described in this policy (e.g., to improve stability and performance),
-    and as required by applicable laws or service provider retention rules.
-  </p>
-
-  <h2>8) Security</h2>
-  <p>
-    We take reasonable measures to protect information. However, no method of transmission over the Internet is 100% secure.
-  </p>
-
-  <h2>9) Your Choices</h2>
-  <ul>
-    <li>You can uninstall the app at any time to stop further data collection.</li>
-    <li>If ads are enabled, you can reset or limit your Advertising ID in your device settings.</li>
-  </ul>
-
-  <h2>10) Children’s Privacy</h2>
-  <p>
-    TamilRadio FM is not directed to children under 13 and we do not knowingly collect personal data from children.
-  </p>
-
-  <h2>11) Changes to This Policy</h2>
-  <p>
-    We may update this Privacy Policy from time to time. Changes will be posted on this page and the “Last updated” date will be revised accordingly.
-  </p>
-
-  <h2>12) Contact</h2>
-  <p>
-    If you have questions about this Privacy Policy, contact us at:
-    <a href="mailto:psgtech.mohan@gmail.com">psgtech.mohan@gmail.com</a>
-  </p>
-
-  <p class="muted">
-    Back to <a href="./index.html">TamilRadio FM</a>
-  </p>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
 
