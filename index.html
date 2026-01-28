@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TamilRadio FM | Corneon AI</title>
+
+  <!-- Basic SEO / trust signals -->
+  <meta name="description" content="TamilRadio FM by Corneon AI. Listen to Tamil FM radio stations live — music, news, talk & more." />
+  <meta name="author" content="Corneon AI" />
+  <meta name="theme-color" content="#b76e79" />
+
+  <style>
+    :root { --accent:#b76e79; --bg:#ffffff; --card:#f7f7f7; --text:#1a1a1a; --muted:#6b6b6b; }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 16px; }
+
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap: 12px; margin-bottom: 14px; }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    .brand span { color: var(--accent); }
+    .mini { font-size: 13px; color: var(--muted); }
+
+    .hero { background: linear-gradient(135deg, #fff, var(--card)); border-radius: 18px; padding: 22px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    .tag { color: var(--muted); margin: 0 0 14px; }
+
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    a.btn { text-decoration: none; border-radius: 12px; padding: 10px 14px; font-weight: 700; display:inline-flex; align-items:center; gap: 8px; }
+    .primary { background: var(--accent); color: #fff; }
+    .ghost { border: 1px solid #ddd; color: var(--text); background: #fff; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 16px; }
+    @media (min-width: 820px){ .grid { grid-template-columns: 1fr 1fr; } }
+
+    .card { background: var(--card); border-radius: 18px; padding: 16px; }
+    ul { margin: 8px 0 0 18px; }
+    footer { margin-top: 18px; color: var(--muted); font-size: 13px; }
+    .small { font-size: 14px; color: var(--muted); }
+    .pill { display:inline-block; background:#fff; border:1px solid #e7e7e7; padding:6px 10px; border-radius: 999px; font-size: 12px; color: var(--muted); }
+    a { color: var(--accent); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand">Corneon <span>AI</span></div>
+      <div class="mini">Product page • TamilRadio FM</div>
+    </div>
+
+    <div class="hero">
+      <div class="pill">Android • Audio Streaming</div>
+      <h1 style="margin-top:10px;">TamilRadio FM</h1>
+      <p class="tag">Listen to Tamil FM radio stations live — music, news, talk & more.</p>
+
+      <div class="btns">
+        <!-- Replace # with your Play Store URL once the app is published -->
+        <a class="btn primary" href="#" target="_blank" rel="noopener">Get it on Google Play</a>
+        <a class="btn ghost" href="./privacy.html">Privacy Policy</a>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
+        Support: <a href="mailto:psgtech.mohan@gmail.com">psgtech.mohan@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2 style="margin:0 0 8px;">Key Features</h2>
+        <ul>
+          <li>Live Tamil FM radio streaming</li>
+          <li>Music, devotional, news & talk stations</li>
+          <li>Background playback support</li>
+          <li>Simple, fast and lightweight</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 8px;">Disclaimer</h2>
+        <p style="margin:0;">
+          TamilRadio FM provides access to publicly available radio stream links.
+          We do not host, own, or claim rights to third-party streams, station names, or logos unless explicitly stated.
+          Station availability and content are managed by the respective providers.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="y"></span> Corneon AI • TamilRadio FM • <a href="./privacy.html">Privacy Policy</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
